@@ -8,7 +8,7 @@ import {
 } from "/src/components/ui/dialog";
 import Column from './components/Column';
 import AddTaskModal from './components/AddTaskModal';
-import { useTaskContext } from './context/TaskContext';
+import { API_URL, useTaskContext } from './context/TaskContext';
 
 const Tasks = () => {
   const { state, dispatch } = useTaskContext();
@@ -37,7 +37,7 @@ const Tasks = () => {
     const fetchTasks = () => {
       setLoading(true);
   
-      let url = 'http://localhost:5000/api/tasks';
+      let url = API_URL;
       if (filterStatus !== null) {
         url += `?status=${filterStatus}`;
       }

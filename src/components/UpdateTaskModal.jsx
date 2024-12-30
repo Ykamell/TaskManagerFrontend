@@ -18,7 +18,7 @@ import {
   NativeSelectField,
   NativeSelectRoot,
 } from "/src/components/ui/native-select";
-import { useTaskContext } from '../context/TaskContext';
+import { useTaskContext, API_URL } from '../context/TaskContext';
 
 const UpdateTaskModal = ({ task }) => {
   const { dispatch } = useTaskContext();
@@ -30,7 +30,7 @@ const UpdateTaskModal = ({ task }) => {
     const updatedTask = { ...task, title, description, status };
 
     axios
-      .put(`http://localhost:5000/api/tasks/${task.id}`, updatedTask)
+      .put(`${API_URL}/${task.id}`, updatedTask)
       .then((response) => {
         dispatch({ type: 'UPDATE_TASK', payload: response.data }); 
       })

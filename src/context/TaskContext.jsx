@@ -2,6 +2,8 @@
 /* eslint-disable react/prop-types */
 import { createContext, useContext, useReducer } from 'react';
 
+export const API_URL = 'https://taskmanagerbackend-production-e8ed.up.railway.app/api/tasks';
+
 const initialState = {
   tasks: [],
 };

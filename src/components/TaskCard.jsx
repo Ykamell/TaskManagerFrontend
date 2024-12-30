@@ -6,7 +6,7 @@ import {
   DialogTrigger,
 } from "/src/components/ui/dialog";
 import ViewTaskModal from './ViewTaskModal';
-import { useTaskContext } from "../context/TaskContext";
+import { API_URL, useTaskContext } from "../context/TaskContext";
 import UpdateTaskModal from './UpdateTaskModal';
 
 const TaskCard = ({ task }) => {
@@ -14,7 +14,7 @@ const TaskCard = ({ task }) => {
 
   const handleDelete = () => {
     axios
-      .delete(`http://localhost:5000/api/tasks/${task.id}`)
+      .delete(`${API_URL}/${task.id}`)
       .then(() => {
         dispatch({ type: 'DELETE_TASK', payload: { id: task.id } });
       })
@@ -26,7 +26,7 @@ const TaskCard = ({ task }) => {
   const handleChangeStatus = async (id) => {
     const updatedStatus = !task.status; 
     try {
-      await axios.put(`http://localhost:5000/api/tasks/${id}`, { status: updatedStatus });
+      await axios.put(`${API_URL}/${id}`, { status: updatedStatus });
 
       dispatch({
         type: 'UPDATE_TASK',
